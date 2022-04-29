@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.apache.activemq.ActiveMQConnection;
 
 import java.io.IOException;
 import java.util.Locale;
@@ -36,6 +37,7 @@ public class ClientApplication extends Application {
     }
 
     public static void main(String[] args) {
+        Context.url = args.length > 0 ? args[0] : ActiveMQConnection.DEFAULT_BROKER_URL;
         launch();
     }
 }

@@ -71,3 +71,9 @@ ScrollPane {
     -fx-border-width: 2px;
     -fx-padding: 10px;
 }
+
+.reloadText {
+    -fx-font-weight: 600;
+    -fx-cursor: hand;
+    -fx-underline: true;
+}
