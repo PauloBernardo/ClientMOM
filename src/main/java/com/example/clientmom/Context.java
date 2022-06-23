@@ -26,6 +26,16 @@ public class Context implements MessageListener {
         connection = (ActiveMQConnection) connectionFactory.createConnection();
         connection.start();
         session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Destination dest = session.createTopic("chatMediator");
+        /*
+         * Criando Consumidor
+         */
+        MessageConsumer subscriber = session.createConsumer(dest);
+
+        /*
+         * Setando Listener
+         */
+        subscriber.setMessageListener(this);
     }
 
     public static Context getInstance() throws JMSException {
@@ -59,33 +69,6 @@ public class Context implements MessageListener {
 
     public ArrayList<String> getTopics() {
         return topics;
-    }
-
-    public void setTopics(ArrayList<String> topics) throws JMSException {
-        for (MessageConsumer consumer : consumers) {
-            consumer.close();
-        }
-        consumers.clear();
-        for (String topic : topics) {
-            Destination dest = null;
-            Set<ActiveMQTopic> topics1 = connection.getDestinationSource().getTopics();
-            for (ActiveMQTopic topic1 : topics1) {
-                if (topic1.getPhysicalName().equals(topic)) {
-                    dest = topic1;
-                }
-            }
-            /*
-             * Criando Consumidor
-             */
-            MessageConsumer subscriber = session.createConsumer(dest);
-
-            /*
-             * Setando Listener
-             */
-            subscriber.setMessageListener(this);
-
-        }
-        this.topics = topics;
     }
 
     @Override

@@ -3,11 +3,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.FlowPane?>
 
-<AnchorPane fx:id="root" prefHeight="379.0" prefWidth="612.0" stylesheets="@aplication.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientmom.ClientController">
+<AnchorPane fx:id="root" prefHeight="224.0" prefWidth="612.0" stylesheets="@aplication.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.clientmom.ClientController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -15,10 +13,4 @@
     <Label fx:id="welcomeText" alignment="CENTER" contentDisplay="CENTER" layoutX="151.0" layoutY="14.0" prefHeight="35.0" prefWidth="204.0" styleClass="titleText" text="%hello.title" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="131.0" />
     <Button layoutX="201.0" layoutY="288.0" onAction="#onHelloButtonClick" text="%hello.button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="181.0" AnchorPane.rightAnchor="181.0" />
    <Label fx:id="welcomeText1" alignment="CENTER" layoutX="230.0" layoutY="61.0" text="%hello.parameterLabel" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="210.0" />
-   <ScrollPane layoutX="86.0" layoutY="90.0" prefHeight="200.0" prefWidth="440.0" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="66.0" AnchorPane.topAnchor="80.0">
-     <content>
-         <FlowPane fx:id="parameterCheckBox" />
-     </content>
-   </ScrollPane>
-   <Label layoutX="106.0" layoutY="295.0" onMouseClicked="#onReloadTopics" styleClass="reloadText" text="%hello.reload" AnchorPane.bottomAnchor="55.0" AnchorPane.leftAnchor="86.0" />
 </AnchorPane>

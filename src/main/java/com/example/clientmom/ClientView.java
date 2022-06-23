@@ -8,7 +8,6 @@ import org.apache.activemq.command.ActiveMQTextMessage;
 import javax.jms.Message;
 import javax.jms.TextMessage;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 import java.util.ResourceBundle;
@@ -16,8 +15,6 @@ import java.util.ResourceBundle;
 public class ClientView extends ResizableView {
     @FXML
     public VBox alarmsBox;
-    @FXML
-    public VBox sensorsContainer;
 
     ResourceBundle bundle = ResourceBundle.getBundle("com.example.clientmom.i18n", new Locale("pt_br", "pt_BR"));
 
@@ -27,14 +24,6 @@ public class ClientView extends ResizableView {
         try {
             Context context = Context.getInstance();
             context.addListening(this);
-            ArrayList<String> topics = context.getTopics();
-            int count = 1;
-            for (String topic : topics) {
-                Label label = new Label("Tópico " + count + ": " + topic);
-                label.getStyleClass().add("namePlayerLabel");
-                sensorsContainer.getChildren().add(label);
-                count++;
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -45,7 +34,6 @@ public class ClientView extends ResizableView {
     public void manipulateMessage(Message message) {
         if (message instanceof TextMessage) {
             try {
-
                 String textMessage = ((TextMessage) message).getText();
                 Date date = new Date(message.getJMSTimestamp());
 
